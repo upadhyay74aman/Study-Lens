@@ -62,7 +62,7 @@ export default function App() {
     formData.append('file', file);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
       const response = await fetch(`${API_URL}/process-notes`, { method: 'POST', body: formData });
       if (!response.ok) {
         let errMsg = 'Failed to process notes.';
